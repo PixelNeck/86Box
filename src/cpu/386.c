@@ -271,6 +271,7 @@ exec386_2386(int32_t cycs)
 
                 cpu_state.pc++;
                 x86_opcodes[(opcode | cpu_state.op32) & 0x3ff](fetchdat);
+                sse_xmm = 0;
                 if (x86_was_reset)
                     break;
             }
