@@ -41,8 +41,8 @@ jobs:
       fail-fast: true
       matrix:
         build:
-#          - name: Regular
-#            preset: regular
+          - name: Regular
+            preset: regular
           - name: Debug
             preset: debug
             slug: -Debug
@@ -162,8 +162,8 @@ jobs:
       fail-fast: true
       matrix:
         build:
-#          - name: Regular
-#            preset: regular
+          - name: Regular
+            preset: regular
           - name: Debug
             preset: debug
             slug: -Debug
@@ -297,8 +297,8 @@ jobs:
       fail-fast: true
       matrix:
         build:
-#          - name: Regular
-#            preset: regular
+          - name: Regular
+            preset: regular
           - name: Debug
             preset: debug
             slug: -Debug
@@ -393,8 +393,8 @@ jobs:
       fail-fast: true
       matrix:
         build:
-#          - name: Regular
-#            preset: regular
+          - name: Regular
+            preset: regular
           - name: Debug
             preset: debug
             slug: -Debug
