@@ -1755,6 +1755,89 @@ const cpu_family_t cpu_families[] = {
         {"500",             CPU_K6_3P, fpus_internal,  500000000, 5.0, 2000, 0x5d0, 0x5d0, 0, CPU_SUPPORTS_DYNAREC | CPU_REQUIRES_DYNAREC,    45,   45,  15,  15, 60},
         {"", 0}
     }
+    }, {
+    .package = CPU_PKG_SLOTA,
+    .manufacturer = "AMD",
+    .name = "Athlon (Argon)",
+    .internal_name = "amd_k7",
+    .cpus = (const CPU[]) {
+        {"500",             CPU_ATHLON, fpus_internal,  500000000, 5.0, 1600, 0x612, 0x612, 0, CPU_SUPPORTS_DYNAREC | CPU_REQUIRES_DYNAREC,    45,   45,  15,  15, 60},
+        {"550",             CPU_ATHLON, fpus_internal,  550000000, 5.5, 1600, 0x612, 0x612, 0, CPU_SUPPORTS_DYNAREC | CPU_REQUIRES_DYNAREC,    47,   47,  15,  15, 60},
+        {"600",             CPU_ATHLON, fpus_internal,  600000000, 6.0, 1600, 0x612, 0x612, 0, CPU_SUPPORTS_DYNAREC | CPU_REQUIRES_DYNAREC,    49,   49,  15,  15, 60},
+        {"650",             CPU_ATHLON, fpus_internal,  650000000, 6.5, 1600, 0x612, 0x612, 0, CPU_SUPPORTS_DYNAREC | CPU_REQUIRES_DYNAREC,    51,   51,  15,  15, 60},
+        {"700",             CPU_ATHLON, fpus_internal,  700000000, 7.0, 1600, 0x612, 0x612, 0, CPU_SUPPORTS_DYNAREC | CPU_REQUIRES_DYNAREC,    53,   53,  15,  15, 60},
+        {"", 0}
+    }
+    }, {
+    .package = CPU_PKG_SLOTA,
+    .manufacturer = "AMD",
+    .name = "Athlon (Pluto)",
+    .internal_name = "amd_k75p",
+    .cpus = (const CPU[]) {
+        {"500",             CPU_ATHLON, fpus_internal,  500000000, 5.0, 1600, 0x622, 0x622, 0, CPU_SUPPORTS_DYNAREC | CPU_REQUIRES_DYNAREC,    45,   45,  15,  15, 60},
+        {"550",             CPU_ATHLON, fpus_internal,  550000000, 5.5, 1600, 0x622, 0x622, 0, CPU_SUPPORTS_DYNAREC | CPU_REQUIRES_DYNAREC,    47,   47,  15,  15, 60},
+        {"600",             CPU_ATHLON, fpus_internal,  600000000, 6.0, 1600, 0x622, 0x622, 0, CPU_SUPPORTS_DYNAREC | CPU_REQUIRES_DYNAREC,    49,   49,  15,  15, 60},
+        {"650",             CPU_ATHLON, fpus_internal,  650000000, 6.5, 1600, 0x622, 0x622, 0, CPU_SUPPORTS_DYNAREC | CPU_REQUIRES_DYNAREC,    51,   51,  15,  15, 60},
+        {"700",             CPU_ATHLON, fpus_internal,  700000000, 7.0, 1600, 0x622, 0x622, 0, CPU_SUPPORTS_DYNAREC | CPU_REQUIRES_DYNAREC,    53,   54,  15,  15, 60},
+        {"750",             CPU_ATHLON, fpus_internal,  750000000, 7.5, 1600, 0x622, 0x622, 0, CPU_SUPPORTS_DYNAREC | CPU_REQUIRES_DYNAREC,    55,   55,  15,  15, 60},
+        {"800",             CPU_ATHLON, fpus_internal,  800000000, 8.0, 1700, 0x622, 0x622, 0, CPU_SUPPORTS_DYNAREC | CPU_REQUIRES_DYNAREC,    57,   57,  15,  15, 60},
+        {"850",             CPU_ATHLON, fpus_internal,  850000000, 8.5, 1700, 0x622, 0x622, 0, CPU_SUPPORTS_DYNAREC | CPU_REQUIRES_DYNAREC,    59,   59,  15,  15, 60},
+        {"", 0}
+    }
+    }, {
+    .package = CPU_PKG_SLOTA,
+    .manufacturer = "AMD",
+    .name = "Athlon (Orion)",
+    .internal_name = "amd_k75o",
+    .cpus = (const CPU[]) {
+        {"900",             CPU_ATHLON, fpus_internal,  900000000,  9.0,  1800, 0x622, 0x622, 0, CPU_SUPPORTS_DYNAREC | CPU_REQUIRES_DYNAREC,    61,   61,  15,  15, 60},
+        {"950",             CPU_ATHLON, fpus_internal,  950000000,  9.5,  1800, 0x622, 0x622, 0, CPU_SUPPORTS_DYNAREC | CPU_REQUIRES_DYNAREC,    63,   63,  15,  15, 60},
+        {"1000",            CPU_ATHLON, fpus_internal,  1000000000, 10.0, 1800, 0x622, 0x622, 0, CPU_SUPPORTS_DYNAREC | CPU_REQUIRES_DYNAREC,    65,   65,  15,  15, 60},
+        {"", 0}
+    }
+    }, {
+    .package = CPU_PKG_SLOTA,
+    .manufacturer = "AMD",
+    .name = "Athlon (Thunderbird)",
+    .internal_name = "amd_thunderbird_slota",
+    .cpus = (const CPU[]) {
+        {"650",            CPU_ATHLON, fpus_internal,  650000000,  6.5,  1700, 0x642, 0x642, 0, CPU_SUPPORTS_DYNAREC | CPU_REQUIRES_DYNAREC,    51,   51,  15,  15, 60},
+        {"700",            CPU_ATHLON, fpus_internal,  700000000,  7.0,  1700, 0x642, 0x642, 0, CPU_SUPPORTS_DYNAREC | CPU_REQUIRES_DYNAREC,    53,   53,  15,  15, 60},
+        {"750",            CPU_ATHLON, fpus_internal,  750000000,  7.5,  1700, 0x642, 0x642, 0, CPU_SUPPORTS_DYNAREC | CPU_REQUIRES_DYNAREC,    55,   55,  15,  15, 60},
+        {"800",            CPU_ATHLON, fpus_internal,  800000000,  8.0,  1700, 0x642, 0x642, 0, CPU_SUPPORTS_DYNAREC | CPU_REQUIRES_DYNAREC,    57,   57,  15,  15, 60},
+        {"850",            CPU_ATHLON, fpus_internal,  850000000,  8.5,  1700, 0x642, 0x642, 0, CPU_SUPPORTS_DYNAREC | CPU_REQUIRES_DYNAREC,    59,   59,  15,  15, 60},
+        {"900",            CPU_ATHLON, fpus_internal,  900000000,  9.0,  1750, 0x642, 0x642, 0, CPU_SUPPORTS_DYNAREC | CPU_REQUIRES_DYNAREC,    61,   61,  15,  15, 60},
+        {"950",            CPU_ATHLON, fpus_internal,  950000000,  9.5,  1750, 0x642, 0x642, 0, CPU_SUPPORTS_DYNAREC | CPU_REQUIRES_DYNAREC,    63,   63,  15,  15, 60},
+        {"1000B",          CPU_ATHLON, fpus_internal,  1000000000, 10.0, 1750, 0x642, 0x642, 0, CPU_SUPPORTS_DYNAREC | CPU_REQUIRES_DYNAREC,    65,   65,  15,  15, 60},
+        {"", 0}
+    }
+    }, {
+    .package = CPU_PKG_SOCKETA,
+    .manufacturer = "AMD",
+    .name = "Athlon (Thunderbird)",
+    .internal_name = "amd_thunderbird_socketa",
+    .cpus = (const CPU[]) {
+        {"600",            CPU_ATHLON, fpus_internal,  600000000,  6.0,  1750, 0x642, 0x642, 0, CPU_SUPPORTS_DYNAREC | CPU_REQUIRES_DYNAREC,    49,   49,  15,  15, 60},
+        {"650",            CPU_ATHLON, fpus_internal,  650000000,  6.5,  1750, 0x642, 0x642, 0, CPU_SUPPORTS_DYNAREC | CPU_REQUIRES_DYNAREC,    51,   51,  15,  15, 60},
+        {"700",            CPU_ATHLON, fpus_internal,  700000000,  7.0,  1750, 0x642, 0x642, 0, CPU_SUPPORTS_DYNAREC | CPU_REQUIRES_DYNAREC,    53,   53,  15,  15, 60},
+        {"750",            CPU_ATHLON, fpus_internal,  750000000,  7.5,  1750, 0x642, 0x642, 0, CPU_SUPPORTS_DYNAREC | CPU_REQUIRES_DYNAREC,    55,   55,  15,  15, 60},
+        {"800",            CPU_ATHLON, fpus_internal,  800000000,  8.0,  1750, 0x642, 0x642, 0, CPU_SUPPORTS_DYNAREC | CPU_REQUIRES_DYNAREC,    57,   57,  15,  15, 60},
+        {"850",            CPU_ATHLON, fpus_internal,  850000000,  8.5,  1750, 0x642, 0x642, 0, CPU_SUPPORTS_DYNAREC | CPU_REQUIRES_DYNAREC,    59,   59,  15,  15, 60},
+        {"900",            CPU_ATHLON, fpus_internal,  900000000,  9.0,  1750, 0x642, 0x642, 0, CPU_SUPPORTS_DYNAREC | CPU_REQUIRES_DYNAREC,    61,   61,  15,  15, 60},
+        {"950",            CPU_ATHLON, fpus_internal,  950000000,  9.5,  1750, 0x642, 0x642, 0, CPU_SUPPORTS_DYNAREC | CPU_REQUIRES_DYNAREC,    63,   63,  15,  15, 60},
+        {"1000B",          CPU_ATHLON, fpus_internal,  1000000000, 10.0, 1750, 0x642, 0x642, 0, CPU_SUPPORTS_DYNAREC | CPU_REQUIRES_DYNAREC,    65,   65,  15,  15, 60},
+        {"1000C",          CPU_ATHLON, fpus_internal,  1000000000,  7.5, 1750, 0x642, 0x642, 0, CPU_SUPPORTS_DYNAREC | CPU_REQUIRES_DYNAREC,    65,   65,  15,  15, 60},
+        {"1100",           CPU_ATHLON, fpus_internal,  1100000000, 11.0, 1750, 0x642, 0x642, 0, CPU_SUPPORTS_DYNAREC | CPU_REQUIRES_DYNAREC,    67,   67,  15,  15, 60},
+        {"1133",           CPU_ATHLON, fpus_internal,  1133333333,  8.5, 1750, 0x642, 0x642, 0, CPU_SUPPORTS_DYNAREC | CPU_REQUIRES_DYNAREC,    69,   69,  15,  15, 60},
+        {"1200B",          CPU_ATHLON, fpus_internal,  1200000000, 12.0, 1750, 0x642, 0x642, 0, CPU_SUPPORTS_DYNAREC | CPU_REQUIRES_DYNAREC,    71,   71,  15,  15, 60},
+        {"1200C",          CPU_ATHLON, fpus_internal,  1200000000,  9.0, 1750, 0x642, 0x642, 0, CPU_SUPPORTS_DYNAREC | CPU_REQUIRES_DYNAREC,    73,   73,  15,  15, 60},
+        {"1266",           CPU_ATHLON, fpus_internal,  1266666666,  9.5, 1750, 0x642, 0x642, 0, CPU_SUPPORTS_DYNAREC | CPU_REQUIRES_DYNAREC,    75,   75,  15,  15, 60},
+        {"1300",           CPU_ATHLON, fpus_internal,  1300000000, 13.0, 1750, 0x642, 0x642, 0, CPU_SUPPORTS_DYNAREC | CPU_REQUIRES_DYNAREC,    77,   77,  15,  15, 60},
+        {"1333",           CPU_ATHLON, fpus_internal,  1333333333, 10.0, 1750, 0x642, 0x642, 0, CPU_SUPPORTS_DYNAREC | CPU_REQUIRES_DYNAREC,    79,   79,  15,  15, 60},
+        {"1400B",          CPU_ATHLON, fpus_internal,  1400000000, 14.0, 1750, 0x642, 0x642, 0, CPU_SUPPORTS_DYNAREC | CPU_REQUIRES_DYNAREC,    81,   81,  15,  15, 60},
+        {"1400C",          CPU_ATHLON, fpus_internal,  1400000000, 10.5, 1750, 0x642, 0x642, 0, CPU_SUPPORTS_DYNAREC | CPU_REQUIRES_DYNAREC,    83,   83,  15,  15, 60},
+        {"", 0}
+    }
     },
 #if defined(DEV_BRANCH) && defined(USE_CYRIX_6X86)
     {

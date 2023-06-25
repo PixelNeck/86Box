@@ -11,6 +11,7 @@
 
 #include "x86.h"
 #include "x86_ops.h"
+#include "x86seg_common.h"
 #include "x87.h"
 #include "386_common.h"
 #include "codegen.h"
@@ -904,40 +905,40 @@ static const macro_op_t wbinvd_op =
 static const macro_op_t *opcode_timings[256] =
 {
 /*      ADD                    ADD                    ADD                   ADD*/
-/*00*/  &alup0_store_op,       &alu_store_op,         &load_alup0_op,       &load_alu_op,
+/*00*/  &alup01_store_op,      &alu_store_op,         &load_alup01_op,      &load_alu_op,
 /*      ADD                    ADD                    PUSH ES               POP ES*/
-        &alup0_op,             &alu_op,               &push_seg_op,         &mov_seg_mem_op,
+        &alup01_op,            &alu_op,               &push_seg_op,         &mov_seg_mem_op,
 /*      OR                     OR                     OR                    OR*/
-        &alup0_store_op,       &alu_store_op,         &load_alup0_op,       &load_alu_op,
+        &alup01_store_op,      &alu_store_op,         &load_alup01_op,      &load_alu_op,
 /*      OR                     OR                     PUSH CS               */
-        &alup0_op,             &alu_op,               &push_seg_op,         INVALID,
+        &alup01_op,            &alu_op,               &push_seg_op,         INVALID,
 
 /*      ADC                    ADC                    ADC                   ADC*/
-/*10*/  &alup0_store_op,       &alu_store_op,         &load_alup0_op,       &load_alu_op,
+/*10*/  &alup01_store_op,      &alu_store_op,         &load_alup01_op,      &load_alu_op,
 /*      ADC                    ADC                    PUSH SS               POP SS*/
         &complex_alup0_1_op,   &complex_alu1_op,      &push_seg_op,         &mov_seg_mem_op,
 /*      SBB                    SBB                    SBB                   SBB*/
-/*10*/  &alup0_store_op,       &alu_store_op,         &load_alup0_op,       &load_alu_op,
+/*10*/  &alup01_store_op,      &alu_store_op,         &load_alup01_op,      &load_alu_op,
 /*      SBB                    SBB                    PUSH DS               POP DS*/
         &complex_alup0_1_op,   &complex_alu1_op,      &push_seg_op,         &mov_seg_mem_op,
 
 /*      AND                    AND                    AND                   AND*/
-/*20*/  &alup0_store_op,       &alu_store_op,         &load_alup0_op,       &load_alu_op,
+/*20*/  &alup01_store_op,      &alu_store_op,         &load_alup01_op,      &load_alu_op,
 /*      AND                    AND                                          DAA*/
-        &alup0_op,             &alu_op,               INVALID,              &complex_alup0_1_op,
+        &alup01_op,            &alu_op,               INVALID,              &complex_alup0_1_op,
 /*      SUB                    SUB                    SUB                   SUB*/
-        &alup0_store_op,       &alu_store_op,         &load_alup0_op,       &load_alu_op,
+        &alup01_store_op,      &alu_store_op,         &load_alup01_op,      &load_alu_op,
 /*      SUB                    SUB                                          DAS*/
-        &alup0_op,             &alu_op,               INVALID,              &complex_alup0_1_op,
+        &alup01_op,            &alu_op,               INVALID,              &complex_alup0_1_op,
 
 /*      XOR                    XOR                    XOR                   XOR*/
-/*30*/  &alup0_store_op,       &alu_store_op,         &load_alup0_op,       &load_alu_op,
+/*30*/  &alup01_store_op,      &alu_store_op,         &load_alup01_op,      &load_alu_op,
 /*      XOR                    XOR                                          AAA*/
-        &alup0_op,             &alu_op,               INVALID,              &alup0_6_op,
+        &alup01_op,            &alu_op,               INVALID,              &alup0_6_op,
 /*      CMP                    CMP                    CMP                   CMP*/
-        &load_alup0_op,        &load_alu_op,          &load_alup0_op,       &load_alu_op,
+        &load_alup01_op,       &load_alu_op,          &load_alup01_op,      &load_alu_op,
 /*      CMP                    CMP                                          AAS*/
-        &alup0_op,             &alu_op,               INVALID,              &alup0_6_op,
+        &alup01_op,            &alu_op,               INVALID,              &alup0_6_op,
 
 /*      INC EAX                INC ECX                INC EDX                INC EBX*/
 /*40*/  &alu_op,               &alu_op,               &alu_op,               &alu_op,
@@ -1034,19 +1035,19 @@ static const macro_op_t *opcode_timings[256] =
 /*      CLC                        STC                        CLI                        STI*/
         &complex_alu1_op,          &complex_alu1_op,          &cli_sti_op,               &cli_sti_op,
 /*      CLD                        STD                        INCDEC*/
-        &complex_alu1_op,          &complex_alu1_op,          &alup0_store_op,           INVALID
+        &complex_alu1_op,          &complex_alu1_op,          &alup01_store_op,          INVALID
 };
 
 static const macro_op_t *opcode_timings_mod3[256] =
 {
 /*      ADD                       ADD                       ADD                       ADD*/
-/*00*/  &alup0_op,                &alu_op,                  &alup0_op,                &alu_op,
+/*00*/  &alup01_op,               &alu_op,                  &alup01_op,               &alu_op,
 /*      ADD                       ADD                       PUSH ES                   POP ES*/
-        &alup0_op,                &alu_op,                  &push_seg_op,             &mov_seg_mem_op,
+        &alup01_op,               &alu_op,                  &push_seg_op,             &mov_seg_mem_op,
 /*      OR                        OR                        OR                        OR*/
-        &alup0_op,                &alu_op,                  &alup0_op,                &alu_op,
+        &alup01_op,               &alu_op,                  &alup01_op,               &alu_op,
 /*      OR                        OR                        PUSH CS                   */
-        &alup0_op,                &alu_op,                  &push_seg_op,             INVALID,
+        &alup01_op,               &alu_op,                  &push_seg_op,             INVALID,
 
 /*      ADC                       ADC                       ADC                       ADC*/
 /*10*/  &complex_alup0_1_op,      &complex_alu1_op,         &complex_alup0_1_op,      &complex_alu1_op,
@@ -1058,22 +1059,22 @@ static const macro_op_t *opcode_timings_mod3[256] =
         &complex_alup0_1_op,      &complex_alu1_op,         &push_seg_op,             &mov_seg_mem_op,
 
 /*      AND                       AND                       AND                       AND*/
-/*20*/  &alup0_op,                &alu_op,                  &alup0_op,                &alu_op,
+/*20*/  &alup01_op,               &alu_op,                  &alup01_op,               &alu_op,
 /*      AND                       AND                                                 DAA*/
-        &alup0_op,                &alu_op,                  INVALID,                  &complex_alup0_1_op,
+        &alup01_op,               &alu_op,                  INVALID,                  &complex_alup0_1_op,
 /*      SUB                       SUB                       SUB                       SUB*/
-        &alup0_op,                &alu_op,                  &alup0_op,                &alu_op,
+        &alup01_op,               &alu_op,                  &alup01_op,               &alu_op,
 /*      SUB                       SUB                                                 DAS*/
-        &alup0_op,                &alu_op,                  INVALID,                  &complex_alup0_1_op,
+        &alup01_op,               &alu_op,                  INVALID,                  &complex_alup0_1_op,
 
 /*      XOR                       XOR                       XOR                       XOR*/
-/*30*/  &alup0_op,                &alu_op,                  &alup0_op,                &alu_op,
+/*30*/  &alup01_op,               &alu_op,                  &alup01_op,               &alu_op,
 /*      XOR                       XOR                                                 AAA*/
-        &alup0_op,                &alu_op,                  INVALID,                  &alup0_6_op,
+        &alup01_op,               &alu_op,                  INVALID,                  &alup0_6_op,
 /*      CMP                       CMP                       CMP                       CMP*/
-        &alup0_op,                &alu_op,                  &alup0_op,                &alu_op,
+        &alup01_op,               &alu_op,                  &alup01_op,               &alu_op,
 /*      CMP                       CMP                                                 AAS*/
-        &alup0_op,                &alu_op,                  INVALID,                  &alup0_6_op,
+        &alup01_op,               &alu_op,                  INVALID,                  &alup0_6_op,
 
 /*      INC EAX                INC ECX                INC EDX                INC EBX*/
 /*40*/  &alu_op,               &alu_op,               &alu_op,               &alu_op,
@@ -1232,11 +1233,11 @@ static const macro_op_t *opcode_timings_0f[256] =
         &alu_store_op,           &alu_store_op,          INVALID,                &mul_op,
 
 /*b0*/  &cmpxchg_b_op,           &cmpxchg_op,            &lss_op,                &load_alu_op,
-        &lss_op,                 &lss_op,                &load_alup0_op,         &load_alu_op,
+        &lss_op,                 &lss_op,                &load_alup01_op,        &load_alu_op,
         INVALID,                 INVALID,                &load_alu_op,           &load_alu_op,
-        &bsx_op,                 &bsx_op,                &load_alup0_op,         &load_alu_op,
+        &bsx_op,                 &bsx_op,                &load_alup01_op,        &load_alu_op,
 
-/*c0*/  &alup0_store_op,         &alu_store_op,          INVALID,                INVALID,
+/*c0*/  &alup01_store_op,        &alu_store_op,          INVALID,                INVALID,
         INVALID,                 INVALID,                INVALID,                &cmpxchg_op,
         &bswap_op,               &bswap_op,              &bswap_op,              &bswap_op,
         &bswap_op,               &bswap_op,              &bswap_op,              &bswap_op,
@@ -1314,9 +1315,9 @@ static const macro_op_t *opcode_timings_0f_mod3[256] =
         &complex_alu1_op,        &complex_alu1_op,       INVALID,                &mul_op,
 
 /*b0*/  &cmpxchg_b_op,           &cmpxchg_op,            &lss_op,                &complex_alu1_op,
-        &lss_op,                 &lss_op,                &alup0_op,              &alu_op,
+        &lss_op,                 &lss_op,                &alup01_op,             &alu_op,
         INVALID,                 INVALID,                &complex_alu1_op,       &complex_alu1_op,
-        &bsx_op,                 &bsx_op,                &alup0_op,              &alu_op,
+        &bsx_op,                 &bsx_op,                &alup01_op,             &alu_op,
 
 /*c0*/  &complex_alup0_1_op,     &complex_alu1_op,       INVALID,                INVALID,
         INVALID,                 INVALID,                INVALID,                INVALID,
@@ -1346,8 +1347,8 @@ static const macro_op_t *opcode_timings_shift[8] =
 };
 static const macro_op_t *opcode_timings_shift_b[8] =
 {
-        &alup0_store_op,  &alup0_store_op,  &alup0_store_op,  &alup0_store_op,
-        &alup0_store_op,  &alup0_store_op,  &alup0_store_op,  &alup0_store_op
+        &alup01_store_op,  &alup01_store_op,  &alup01_store_op,  &alup01_store_op,
+        &alup01_store_op,  &alup01_store_op,  &alup01_store_op,  &alup01_store_op
 };
 static const macro_op_t *opcode_timings_shift_mod3[8] =
 {
@@ -1357,18 +1358,18 @@ static const macro_op_t *opcode_timings_shift_mod3[8] =
 static const macro_op_t *opcode_timings_shift_b_mod3[8] =
 {
         &complex_alup0_1_op,  &complex_alup0_1_op,  &complex_alup0_1_op,  &complex_alup0_1_op,
-        &alup0_op,            &alup0_op,            &alup0_op,            &alup0_op
+        &alup01_op,           &alup01_op,           &alup01_op,           &alup01_op
 };
 
 static const macro_op_t *opcode_timings_80[8] =
 {
-        &alup0_store_op, &alup0_store_op, &alup0_store_op,  &alup0_store_op,
-        &alup0_store_op, &alup0_store_op, &alup0_store_op,  &alup0_store_op,
+        &alup01_store_op, &alup01_store_op, &alup01_store_op,  &alup01_store_op,
+        &alup01_store_op, &alup01_store_op, &alup01_store_op,  &alup01_store_op,
 };
 static const macro_op_t *opcode_timings_80_mod3[8] =
 {
-        &alup0_op,       &alup0_op,       &alup0_store_op,  &alup0_store_op,
-        &alup0_op,       &alup0_op,       &alup0_op,        &alup0_op,
+        &alup01_op,      &alup01_op,      &alup01_store_op, &alup01_store_op,
+        &alup01_op,      &alup01_op,      &alup01_op,       &alup01_op,
 };
 static const macro_op_t *opcode_timings_8x[8] =
 {
@@ -1384,14 +1385,14 @@ static const macro_op_t *opcode_timings_8x_mod3[8] =
 static const macro_op_t *opcode_timings_f6[8] =
 {
 /*      TST                                             NOT                     NEG*/
-        &test_mem_imm_b_op,     INVALID,                &alup0_store_op,        &alup0_store_op,
+        &test_mem_imm_b_op,     INVALID,                &alup01_store_op,       &alup01_store_op,
 /*      MUL                     IMUL                    DIV                     IDIV*/
         &mul_mem_op,            &mul_mem_op,            &div16_mem_op,          &div16_mem_op,
 };
 static const macro_op_t *opcode_timings_f6_mod3[8] =
 {
 /*      TST                                             NOT                     NEG*/
-        &test_reg_b_op,         INVALID,                &alup0_op,              &alup0_op,
+        &test_reg_b_op,         INVALID,                &alup01_op,             &alup01_op,
 /*      MUL                     IMUL                    DIV                     IDIV*/
         &mul_op,                &mul_op,                &div16_op,              &div16_op,
 };
@@ -1621,9 +1622,6 @@ static k7_unit_t k7_units[] =
      | (1 << UOP_FSTORED) | (1 << UOP_FSTOREA)}, /*Port 4*/
     {.uop_mask = (1 >> UOP_LOAD) | (1 << UOP_FLOAD) | (1 << UOP_MLOAD)
      | (1 << UOP_STORED) | (1 << UOP_STOREA) | (1 << UOP_MSTORED) | (1 << UOP_MSTOREA)}, /*Port 5*/
-
-}
-
 };
 #define NR_K7_UNITS (sizeof(k7_units) / sizeof(k7_unit_t))
 
@@ -1690,7 +1688,7 @@ static int fpu_st_timestamp[8];
   dependent uop chains*/
 static int last_uop_timestamp = 0;
 
-void decode_flush_k7()
+void decode_flush_k7(void)
 {
         int c;
         int start_timestamp, uop_timestamp = 0;
@@ -1925,7 +1923,7 @@ static void decode_instruction(const macro_op_t *ins, uint64_t deps, uint32_t fe
         }
 }
 
-void codegen_timing_k7_block_start()
+void codegen_timing_k7_block_start(void)
 {
         int c;
 
@@ -1945,7 +1943,7 @@ void codegen_timing_k7_block_start()
                 fpu_st_timestamp[c] = 0;
 }
 
-void codegen_timing_k7_start()
+void codegen_timing_k7_start(void)
 {
     units = k7_units;
     nr_units = NR_K7_UNITS;
@@ -2079,7 +2077,7 @@ void codegen_timing_k7_opcode(uint8_t opcode, uint32_t fetchdat, int op_32, uint
         codegen_block_cycles += (last_complete_timestamp - old_last_complete_timestamp);
 }
 
-void codegen_timing_k7_block_end()
+void codegen_timing_k7_block_end(void)
 {
         if (decode_buffer.nr_uops)
         {
@@ -2089,7 +2087,7 @@ void codegen_timing_k7_block_end()
         }
 }
 
-int codegen_timing_k7_jump_cycles()
+int codegen_timing_k7_jump_cycles(void)
 {
         if (decode_buffer.nr_uops)
                 return 1;
