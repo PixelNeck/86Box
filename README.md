@@ -8,7 +8,7 @@
 
 **ATTENTION: THIS FORK IS VERY UNSTABLE DUE TO:**
 
-**1. My poor knowledge of C and C++**
+**1. My poor knowledge of C, C++ and Qt;**
 
 **2. Addition of CPUs that can perform badly (AMD Athlon, Geode, Pentium 3 Xeon, Mobile etc.)**
 
