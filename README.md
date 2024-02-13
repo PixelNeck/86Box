@@ -14,6 +14,8 @@
 
 I do not recommend this fork for everyday use. This is just pure testing of CPU configurations, etc.
 
+The fork is alive again! (due to jriwanek hiding the Pentium 3 repository from eyes of people)
+
 Features
 --------
 
