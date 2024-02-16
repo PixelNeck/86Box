@@ -1,6 +1,10 @@
 name: CMake (Windows, vcpkg/LLVM)
 
 on:
+  workflow_dispatch:
+  schedule:
+    - cron:  '30 5,17 * * *'
+    
 
   push:
     paths:
