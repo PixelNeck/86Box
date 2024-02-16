@@ -1,6 +1,6 @@
 name: CMake (Linux)
 
-on: workflow_dispatch
+on:
 
   push:
     paths:
