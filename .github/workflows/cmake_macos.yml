@@ -1,27 +1,33 @@
 name: CMake (macos)
 
 on:
-
-  push:
-    paths:
-      - src/**
-      - cmake/**
-      - "**/CMakeLists.txt"
-      - "CMakePresets.json"
-      - .github/workflows/cmake.yml
-      - vcpkg.json
-      - "!**/Makefile*"
-
+  workflow_dispatch:
+  schedule:
+    - cron:  '30 5,17 * * *'
   pull_request:
-    paths:
-      - src/**
-      - cmake/**
-      - "**/CMakeLists.txt"
-      - "CMakePresets.json"
-      - .github/workflows/**
-      - .github/workflows/cmake.yml
-      - vcpkg.json
-      - "!**/Makefile*"
+  push:
+    
+
+##  push:
+##    paths:
+##      - src/**
+##      - cmake/**
+##      - "**/CMakeLists.txt"
+##      - "CMakePresets.json"
+##      - .github/workflows/cmake.yml
+##      - vcpkg.json
+##      - "!**/Makefile*"
+##
+##  pull_request:
+##    paths:
+##      - src/**
+##      - cmake/**
+##      - "**/CMakeLists.txt"
+##      - "CMakePresets.json"
+##      - .github/workflows/**
+##      - .github/workflows/cmake.yml
+##      - vcpkg.json
+##      - "!**/Makefile*"
 
 jobs:
 
