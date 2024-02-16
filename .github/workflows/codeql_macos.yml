@@ -1,6 +1,10 @@
 name: CodeQL Analysis (macos)
 
 on:
+  workflow_dispatch:
+  schedule:
+    - cron:  '30 5,17 * * *'
+    
 
   push:
     paths:
@@ -8,7 +12,7 @@ on:
       - cmake/**
       - "**/CMakeLists.txt"
       - "CMakePresets.json"
-      - .github/workflows/codeql.yml
+      - .github/workflows/cmake.yml
       - vcpkg.json
       - "!**/Makefile*"
 
@@ -19,7 +23,7 @@ on:
       - "**/CMakeLists.txt"
       - "CMakePresets.json"
       - .github/workflows/**
-      - .github/workflows/codeql.yml
+      - .github/workflows/cmake.yml
       - vcpkg.json
       - "!**/Makefile*"
 
